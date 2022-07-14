@@ -7,11 +7,11 @@ const {
 } = require('../helpers/fsUtils');
 
 // GET Route for retrieving all the notes
-notes.get('/', (req, res) => {
+notes.get('/notes', (req, res) => {
   readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-// DELETE Route for a specific tip
+// DELETE Route for a specific notes
 notes.delete('/notes/:id', (req, res) => {
   const noteId = req.params.note_id;//passing the data from the FE
   readFromFile('../db/db.json')
@@ -28,25 +28,24 @@ notes.delete('/notes/:id', (req, res) => {
     });
 });
 
-// POST Route for a new UX/UI tip
-tips.post('/', (req, res) => {
+// POST Route for a new notes
+notes.post('/notes', (req, res) => {
   console.log(req.body);
 
-  const { username, topic, tip } = req.body;
+  const { title, text } = req.body;
 
   if (req.body) {
-    const newTip = {
-      username,
-      tip,
-      topic,
-      tip_id: uuidv4(),
+    const newNote = {
+      title,
+      text,
+      note_id: uuidv4(),
     };
 
-    readAndAppend(newTip, './db/tips.json');
-    res.json(`Tip added successfully 🚀`);
+    readAndAppend(newNote, '../db/db.json');
+    res.json(`note added successfully 🚀`);
   } else {
-    res.error('Error in adding tip');
+    res.error('Error in adding note');
   }
 });
 
-module.exports = tips;
+module.exports = notes;
