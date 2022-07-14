@@ -1,31 +1,14 @@
-const tips = require('express').Router();
+const notes = require('express').Router();
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 const { v4: uuidv4 } = require('uuid');
 
 // GET Route for retrieving all the notes
-notes.get('/notes', (req, res) => {
+notes.get('/api/notes', (req, res) => {
   readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-// DELETE Route for a specific notes
-notes.delete('/notes/:id', (req, res) => {
-  const noteId = req.params.note_id;//passing the data from the FE
-  readFromFile('../db/db.json')
-    .then((data) => JSON.parse(data))
-    .then((json) => {
-      // Make a new array of all notes except the one with the ID provided in the URL
-      const result = json.filter((noteId) => noteId.note_id !== noteId);
-
-      // Save that array to the filesystem
-      writeToFile('./db/db.json', result);
-
-      // Respond to the DELETE request
-      res.json(`Item ${noteId} has been deleted 🗑️`);
-    });
-});
-
 // POST Route for a new notes
-notes.post('/notes', (req, res) => {
+notes.post('/api/notes', (req, res) => {
   console.log(req.body);
 
   const { title, text } = req.body;
@@ -42,6 +25,22 @@ notes.post('/notes', (req, res) => {
   } else {
     res.error('Error in adding note');
   }
+});
+// DELETE Route for a specific notes
+notes.delete('api/notes/:id', (req, res) => {
+  const noteId = req.params.note_id;//passing the data from the FE
+  readFromFile('../db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      // Make a new array of all notes except the one with the ID provided in the URL
+      const result = json.filter((noteId) => noteId.note_id !== noteId);
+
+      // Save that array to the filesystem
+      writeToFile('./db/db.json', result);
+
+      // Respond to the DELETE request
+      res.json(`Item ${noteId} has been deleted 🗑️`);
+    });
 });
 
 module.exports = notes;
