@@ -6,7 +6,7 @@ const { json } = require('express');
 
 // GET Route for retrieving all the notes
 router.get('/notes', (req, res) => {
-readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data))); 
+readFromFile('db/db.json').then((data) => res.json(JSON.parse(data))); 
   // res.json(notes);
 });
 
@@ -25,20 +25,20 @@ router.post('/notes', (req, res) => {
     notes.push(newNote);
     writeToFile('db/db.json',(notes))
     res.json(notes);
-  //   res.json(`note added successfully 🚀`);
-  // } else {
-  //   res.error('Error in adding note');
+    // res.json(`note added successfully 🚀`);
+  } else {
+    res.error('Error in adding note');
 
   }
 });
 // DELETE Route for a specific notes
 router.delete('/notes/:id', (req, res) => {
   const noteId = req.params.id;//passing the data from the FE
+  // Make a new array of all notes except the one with the ID provided in the URL
   const notesKeep = notes.filter((note) => note.id !== noteId);
   writeToFile('db/db.json',notesKeep)
   res.json(notesKeep);  
-  //     res.json(`Item ${noteId} has been deleted 🗑️`);
-  //   });
-});
+    });
+  //res.json(`Item ${noteId} has been deleted 🗑️`);
 
 module.exports = router;
