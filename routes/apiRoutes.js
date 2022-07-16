@@ -35,7 +35,7 @@ router.delete('/notes/:id', (req, res) => {
   const noteId = req.params.id;//passing the data from the FE
   const notesKeep = notes.filter((note) => note.id !== noteId);
   writeToFile('db/db.json',notesKeep)
-  res.json(notes);  
+  res.json(notesKeep);  
   //     res.json(`Item ${noteId} has been deleted 🗑️`);
   //   });
 });
