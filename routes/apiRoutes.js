@@ -6,7 +6,8 @@ const { json } = require('express');
 
 // GET Route for retrieving all the notes
 router.get('/notes', (req, res) => {
-  res.json(notes);
+readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data))); 
+  // res.json(notes);
 });
 
 // POST Route for a new notes
