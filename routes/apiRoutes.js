@@ -19,12 +19,11 @@ router.post('/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      note_id: uuidv4(),
+      id: uuidv4(),
     };
     notes.push(newNote);
-    writeToFile('../db/db.json',JSON.stringify(notes))
+    writeToFile('db/db.json',(notes))
     res.json(notes);
-    // readAndAppend(newNote, '../db/db.json');
   //   res.json(`note added successfully 🚀`);
   // } else {
   //   res.error('Error in adding note');
@@ -35,17 +34,8 @@ router.post('/notes', (req, res) => {
 router.delete('/notes/:id', (req, res) => {
   const noteId = req.params.id;//passing the data from the FE
   const notesKeep = notes.filter((note) => note.id !== noteId);
-  writeToFile('../db/db.json',JSON.stringify(notesKeep))
-  res.json(notes);  //keep the notes filter
-  // readFromFile('../db/db.json')
-  //   // .then((data) => JSON.parse(data))
-  //   .then((data) => console.log(data))
-  //   .then((json) => {
-  //     // Make a new array of all notes except the one with the ID provided in the URL
-  //     // Save that array to the filesystem
-  //     writeToFile('./db/db.json', result);
-
-  //     // Respond to the DELETE request
+  writeToFile('db/db.json',notesKeep)
+  res.json(notes);  
   //     res.json(`Item ${noteId} has been deleted 🗑️`);
   //   });
 });
