@@ -96,6 +96,7 @@ This project is license under [MIT](http://www.apache.org/licenses/LICENSE-2.0)
 ![Bootstrap Badge](https://img.shields.io/badge/Bootstrap-darkblue.svg)
 ![Node.js Badge](https://img.shields.io/badge/Node-yellow.svg)
 ![Express.js Badge](https://img.shields.io/badge/Express-orange.svg)
+![Heroku Badge](https://img.shields.io/badge/Heroku-magenta.svg)
 
 ## Questions
 if you have any questions please reach out to me:<br>
