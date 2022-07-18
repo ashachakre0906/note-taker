@@ -1,6 +1,6 @@
 # note-taker
 ## License
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]
+![License](https://img.shields.io/badge/License-Apache_2.0-red.svg)
 ## Table of Contents
   - [Description](#description)
   - [Application Demo](#application-demo)
@@ -8,7 +8,6 @@
   - [Usage](#usage)
     - [Code Examples and Screenshots](#code-examples-and-screenshots)
   - [License](#license-1)
-  - [Tests](#tests)
   - [Technologies Used](#technologies-used)
   - [Questions](#questions)
 ## Description
@@ -40,16 +39,12 @@ WHEN I click on the Write icon in the navigation at the top of the page
 THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 ```
 ## Application Demo
-![Live gif]()
+![Live gif](./public/assets/images/note-taker.gif)
 
-[Screencastify link]()
+[Screencastify link](https://drive.google.com/file/d/1Wyv39R48uYPd1VWcdfNde64MVAiZjR-e/view)
 
-***The following image shows the generated HTML’s appearance and functionality in large screen***
-<img src = "/dist/assets/images/team-profile.png" alt = "image of team profile">
-
-***The following image of a webpage is Responsive you can shrink the size and set the appropriate responsive breakpoints***
-
-<img src = "/dist/assets/images/team-profile-responsive.png" alt = "image of team profile">
+***The following image shows the generated HTML’s appearance and functionality where user can retrieve, add ,save and delete note.***
+<img src = "./public/assets/images/note-taker.png" alt = "image of note take app">
 
 ## Installation
 * Install Node in your computer by going to `https://nodejs.org/en/download/`
@@ -68,9 +63,27 @@ nodemon server.js
 ```
 
 ### Code Examples and Screenshots
-***Function generateCards() will generate the cards dynamically for Manager,Employee and Intern through forloop***
+***POST Route for adding new notes***
 ```
+router.post('/notes', (req, res) => {
+  console.log(req.body);
 
+  const { title, text } = req.body;
+
+  if (req.body) {
+    const newNote = {
+      title,
+      text,
+      id: uuidv4(),
+    };
+    notes.push(newNote);
+    writeToFile("db/db.json", notes);
+    res.json(notes);
+    console.log(`note added successfully 🚀`);
+  } else {
+    res.error("Error in adding note");
+  }
+});
 ```
 
 ## License
