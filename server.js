@@ -1,9 +1,9 @@
-// dependencies 
+// required dependencies 
 const express = require('express');
 const path = require('path');
 //these routes gives the server direction of how to respond when user request data from various URLS's.
 const api = require('./routes/apiRoutes.js');
-const html = require("./routes/htmlRoutes.js")
+const html = require('./routes/htmlRoutes.js')
 const PORT = process.env.PORT || 3001;
 //telling node that we are creating express server
 const app = express();
