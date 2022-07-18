@@ -43,7 +43,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 [Screencastify link](https://drive.google.com/file/d/1Wyv39R48uYPd1VWcdfNde64MVAiZjR-e/view)
 
-***The following image shows the generated HTML’s appearance and functionality where user can retrieve, add ,save and delete note.***
+***The following image shows the fontend appearance and functionality where user can retrieve, store, add ,save and delete note.***
 <img src = "./public/assets/images/note-taker.png" alt = "image of note take app">
 
 ## Installation
