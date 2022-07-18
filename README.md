@@ -15,6 +15,7 @@ The goal is to build the backend application and connect it with the frontend ap
 `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.POST `/api/notes` should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client .The code for the frontend is already provided.
 
 [Solution URL](https://github.com/ashachakre0906/note-taker)
+[Deploy Heroku URL](https://notes-keep-app.herokuapp.com/)
 
 ## User Story
 ```
