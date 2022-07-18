@@ -14,7 +14,7 @@
 The goal is to build the backend application and connect it with the frontend application to the provided front end code and then deploy the entire application to Heroku.we need to create an application called Note Taker that can be used to retrieve, write, save and delete notes. This application will use an Express.js package. Back end will save and retrieve note data from a JSON file.This application should have both front-end and back-end application.The application should have a db.json file on the back end that will be used to store and retrieve notes using the fs module.HTML routes and API routes needs to be created.`GET /notes` should return the notes.html file.`GET *` should return the index.html file.In API routes,
 `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.POST `/api/notes` should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client .The code for the frontend is already provided.
 
-[Solution URL](https://github.com/ashachakre0906/note-taker)
+[Solution URL](https://github.com/ashachakre0906/note-taker)<br>
 [Deploy Heroku URL](https://notes-keep-app.herokuapp.com/)
 
 ## User Story
